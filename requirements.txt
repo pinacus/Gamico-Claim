@@ -1,0 +1,5 @@
+CTkMessagebox==2.7
+customtkinter==6.0.0
+patchright==1.62.1
+Pillow==12.3.0
+requests==2.34.2

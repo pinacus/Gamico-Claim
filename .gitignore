@@ -1,0 +1,21 @@
+# Python caches and environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.env
+
+# Local credentials and browser sessions
+Config/*.json
+browser_profile/
+
+# Runtime output
+logs/
+*.log
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
