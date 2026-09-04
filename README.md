@@ -192,6 +192,3 @@ The promotion lookup currently uses the US store and English language settings.
 
 Complete any required verification manually and try again later. Do not attempt to bypass CAPTCHA protection.
 
-## License
-
-No license file is included yet. Add a license before distributing the project.
