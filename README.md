@@ -132,10 +132,11 @@ Open your cron table:
 crontab -e
 ```
 
-Add a daily run. Replace the example path with your project path:
+Executes only on Wednesdays at 15:10 UTC (one day before the weekly reset). 
+Replace the example path with your project path:
 
 ```cron
-0 9 * * * /home/your-user/Gamico-Claim/run.sh >> /home/your-user/Gamico-Claim/claim.log 2>&1
+10 15 * * 3 /home/your-user/Gamico-Claim/run.sh >> /home/your-user/Gamico-Claim/claim.log 2>&1
 ```
 
 ### Windows Task Scheduler
