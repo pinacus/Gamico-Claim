@@ -192,3 +192,6 @@ The promotion lookup currently uses the US store and English language settings.
 
 Complete any required verification manually and try again later. Do not attempt to bypass CAPTCHA protection.
 
+## Note 
+
+Users may experience authentication failures or timeouts when signing in on Windows 10/11.
