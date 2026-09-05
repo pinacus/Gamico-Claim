@@ -8,7 +8,7 @@ You log in once through a normal browser window. After setup, the claim script c
 
 
 <p align="center">
-    <img width="617" height="654" alt="Screenshot From 2026-09-04 12-02-12" src="https://github.com/user-attachments/assets/96663e58-e9b0-420f-8943-6ffa94eee6f4" />
+    <img width="2000" height="1560" alt="gamico-claim-readme-collage(5)" src="https://github.com/user-attachments/assets/fa268648-1712-479d-abe0-e2ec3552aa37" />
 </p>
 
 ## Flow
