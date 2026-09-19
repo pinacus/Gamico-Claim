@@ -6,6 +6,11 @@ You log in once through a normal browser window. After setup, the claim script c
 
 > This project is independent and is not affiliated with Epic Games, Discord, or RAWG. Epic may change its website or require CAPTCHA and account verification.
 
+
+<p align="center">
+    <img width="2000" height="1560" alt="gamico-claim-readme-collage(5)" src="https://github.com/user-attachments/assets/fa268648-1712-479d-abe0-e2ec3552aa37" />
+</p>
+
 ## Flow
 
 ```mermaid
@@ -132,10 +137,11 @@ Open your cron table:
 crontab -e
 ```
 
-Add a daily run. Replace the example path with your project path:
+Executes only on Wednesdays at 15:10 UTC (one day before the weekly reset). 
+Replace the example path with your project path:
 
 ```cron
-0 9 * * * /home/your-user/Gamico-Claim/run.sh >> /home/your-user/Gamico-Claim/claim.log 2>&1
+10 15 * * 3 /home/your-user/Gamico-Claim/run.sh >> /home/your-user/Gamico-Claim/claim.log 2>&1
 ```
 
 ### Windows Task Scheduler
@@ -183,6 +189,6 @@ The promotion lookup currently uses the US store and English language settings.
 
 Complete any required verification manually and try again later. Do not attempt to bypass CAPTCHA protection.
 
-## License
+## Note 
 
-No license file is included yet. Add a license before distributing the project.
+Users may experience authentication failures or timeouts when signing in on Windows 10/11.
