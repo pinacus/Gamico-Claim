@@ -1,13 +1,12 @@
 import requests
-from pathlib import Path
 import os
+from typing import Any
 
 from patchright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
+from src.config import load_config
 from src.epic_games.notification import Notification
 
 FREE_GAMES_API = "https://store-site-backend-static.ak.epicgames.com/freeGamesPromotions"
-
-SESSION_FILE = Path("Config/session.json")
 
 COUNTRY = "US"
 LOCALE = "en-US"
@@ -176,7 +175,8 @@ class ClaimGame:
         for single_game in games:
             print(f"  - {single_game['title']}")
 
-        if not SESSION_FILE.exists():
+        session: Any = load_config()["Session"]
+        if not session:
             self.send_errors("All games", "Session file not found. Please run the login script first.")
             return
 
@@ -188,7 +188,7 @@ class ClaimGame:
                 "--disable-gpu",
 
             ])
-            context = browser.new_context(storage_state=SESSION_FILE)
+            context = browser.new_context(storage_state=session)
             page = context.new_page()
             for game in games:
                 try:

@@ -1,17 +1,14 @@
 from pathlib import Path
 from PIL import Image
 import customtkinter
-import json
 from CTkMessagebox import CTkMessagebox
 
+from src.config import load_config, save_config
 from src.epic_games.login import Login
 
 customtkinter.set_appearance_mode("dark")
 
 IMG_PATH = Path("assets")
-USER_CONFIG_DATA = Path("Config/discord.json")
-CHECK_SESSION_FILE = Path("Config/session.json")
-
 class GUI(customtkinter.CTk):
   def __init__(self):
     super().__init__()
@@ -34,14 +31,9 @@ class GUI(customtkinter.CTk):
 
     webhook_url = dialog.get_input()
     if webhook_url:
-      data_format = {
-
-          "Discord WEBHOOK URL": webhook_url.strip()
-
-        }
-
-      with open(USER_CONFIG_DATA, "w", encoding="utf-8") as file:
-        json.dump(data_format, file, indent=4)
+      config = load_config()
+      config["Discord"]["Discord WEBHOOK URL"] = webhook_url.strip()
+      save_config(config)
 
       CTkMessagebox(
 
@@ -103,10 +95,10 @@ class GUI(customtkinter.CTk):
     self.discord_button.pack(pady=(10, 20))
 
   def update_account_status(self):
+    config = load_config()
     session_status = "active.png" if (
-
-        CHECK_SESSION_FILE.is_file() and USER_CONFIG_DATA.is_file()
-
+      config["Discord"].get("Discord WEBHOOK URL")
+      and config["Session"]
     ) else "inactive.png"
 
     session_img = Image.open(f"{IMG_PATH}/{session_status}")
@@ -114,6 +106,6 @@ class GUI(customtkinter.CTk):
 
         dark_image=session_img,
         size=(30, 30)
-        
+
     )
     self.account_label.configure(image=self.current_session_img)

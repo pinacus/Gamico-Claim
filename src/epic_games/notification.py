@@ -1,21 +1,16 @@
-import json
 import os
 
 import requests
-from pathlib import Path
 from datetime import datetime, timezone
+from src.config import load_config
 
 RAWG_API_KEY = os.getenv("RAWG_API_KEY", "")
-DISCORD_WEBHOOK = Path("Config/discord.json")
-
-
 class Notification:
 	@staticmethod
 	def send_game_msg(game_info_item, show_status=True):
-		with open(DISCORD_WEBHOOK, "r", encoding="utf-8") as file:
-			data = json.load(file)
-
-		discord_webhook = data.get("Discord WEBHOOK URL")
+		discord_webhook = load_config()["Discord"].get("Discord WEBHOOK URL")
+		if not discord_webhook:
+			return
 		game_name = game_info_item["title"]
 		game_url = game_info_item["url"]
 
@@ -72,10 +67,9 @@ class Notification:
 
 	@staticmethod
 	def send_error_msg(game_title, error_message):
-		with open(DISCORD_WEBHOOK, "r", encoding="utf-8") as file:
-			data = json.load(file)
-
-		discord_webhook = data.get("Discord WEBHOOK URL")
+		discord_webhook = load_config()["Discord"].get("Discord WEBHOOK URL")
+		if not discord_webhook:
+			return
 		payload = {
 
 			"embeds": [
@@ -93,7 +87,7 @@ class Notification:
 
 				}
 			]
-   
+
 		}
 
 		requests.post(discord_webhook, json=payload)

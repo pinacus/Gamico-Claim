@@ -91,10 +91,10 @@ Then:
 4. Return to the terminal and press **Enter** when asked.
 5. Close the browser and setup window.
 
-The setup creates:
+The setup creates `Config/config.json` with two sections:
 
-- `Config/discord.json` for the Discord webhook.
-- `Config/session.json` for the Epic login session.
+- `Discord` for the Discord webhook.
+- `Session` for the Epic login session.
 
 The files are created locally and are not uploaded by this project. The login session is used only by the claiming browser.
 
@@ -171,10 +171,7 @@ RAWG is used only to add optional game images and extra information to successfu
 
 ## Safety
 
-Never share or commit these files:
-
-- `Config/discord.json` contains your Discord webhook.
-- `Config/session.json` contains your Epic login session.
+Never share or commit `Config/config.json`. It contains your Discord webhook and Epic login session.
 
 If your Epic session expires, run `main.py` and log in again.
 
