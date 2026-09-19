@@ -1,0 +1,87 @@
+name: Bug report
+description: Report a reproducible problem in setup or claim workflow.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting this issue.
+
+        **Security reminder:** Never include `Config/config.json`, session/cookie data, webhook URLs, or API keys.
+  - type: input
+    id: summary
+    attributes:
+      label: Summary
+      description: What went wrong?
+      placeholder: Briefly describe the bug
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      description: Provide exact steps to reproduce.
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      placeholder: What should have happened?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      placeholder: What happened instead?
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - Linux
+        - Windows 10
+        - Windows 11
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: python_version
+    attributes:
+      label: Python version
+      placeholder: e.g., 3.11.9
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment details
+      description: Include how you run it (run.sh, run_windows.bat, cron, Task Scheduler, etc.).
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs/output (redacted)
+      description: Paste sanitized logs only.
+      render: shell
+    validations:
+      required: false
+  - type: checkboxes
+    id: secrets
+    attributes:
+      label: Sensitive data confirmation
+      options:
+        - label: I confirmed this report does not include `Config/config.json`, session data, webhook URLs, or API keys.
+          required: true
+        - label: I redacted sensitive values from logs/screenshots before submitting.
+          required: true

@@ -1,11 +1,41 @@
 # Gamico Claim
 
-Gamico Claim checks the Epic Games Store for free games and adds them to your Epic Games library. It can also send claim results to Discord.
+Automatically check and claim free Epic Games Store promotions with Python. Supports Linux and Windows workflows, with optional Discord notifications for claim results.
 
-You log in once through a normal browser window. After setup, the claim script can run automatically.
+![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)
+![Platform Linux%20%7C%20Windows](https://img.shields.io/badge/platform-Linux%20%7C%20Windows-informational)
+![License: MIT](https://img.shields.io/github/license/pinacus/Gamico-Claim)
+![GitHub stars](https://img.shields.io/github/stars/pinacus/Gamico-Claim?style=social)
+
+> [!WARNING]
+> `Config/config.json` contains sensitive Discord webhook and Epic session data. Never commit, upload, or share this file.
 
 > This project is independent and is not affiliated with Epic Games, Discord, or RAWG. Epic may change its website or require CAPTCHA and account verification.
 
+## Table of Contents
+
+- [Features](#features)
+- [Flow](#flow)
+- [What Happens During a Run](#what-happens-during-a-run)
+- [Requirements](#requirements)
+- [Install](#install)
+- [First-Time Setup](#first-time-setup)
+- [Run](#run)
+- [Scheduling](#scheduling)
+- [Optional RAWG Images](#optional-rawg-images)
+- [Safety](#safety)
+- [Troubleshooting](#troubleshooting)
+- [Contributing](#contributing)
+- [Security](#security)
+- [Note](#note)
+
+## Features
+
+- Finds current Epic Games Store promotions and filters to fully free offers.
+- Uses your locally saved Epic session to attempt claiming eligible games.
+- Skips already owned titles.
+- Sends optional Discord notifications for success/error outcomes.
+- Supports Linux background runs (`xvfb-run`, cron) and Windows Task Scheduler workflows.
 
 <p align="center">
     <img width="2000" height="1560" alt="gamico-claim-readme-collage(5)" src="https://github.com/user-attachments/assets/fa268648-1712-479d-abe0-e2ec3552aa37" />
@@ -137,7 +167,7 @@ Open your cron table:
 crontab -e
 ```
 
-Executes only on Wednesdays at 15:10 UTC (one day before the weekly reset). 
+Executes only on Wednesdays at 15:10 UTC (one day before the weekly reset).
 Replace the example path with your project path:
 
 ```cron
@@ -189,6 +219,14 @@ The promotion lookup currently uses the US store and English language settings.
 
 Complete any required verification manually and try again later. Do not attempt to bypass CAPTCHA protection.
 
-## Note 
+## Contributing
+
+Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, workflow, and pull request expectations.
+
+## Security
+
+For sensitive-data handling and vulnerability reporting, see [SECURITY.md](SECURITY.md).
+
+## Note
 
 Users may experience authentication failures or timeouts when signing in on Windows 10/11.
